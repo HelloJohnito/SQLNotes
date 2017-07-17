@@ -90,3 +90,24 @@ WHERE column LIKE '_the%'; -- other
 -- MIN MAX AVG SUM
 SELECT ROUND(AVG(column), 2)
 FROM table_name;
+
+
+-- GROUP BY
+SELECT name
+FROM table_name
+GROUP BY name
+-- this is same as SELECT DISTINCT(column)
+
+SELECT name, SUM(amount)
+FROM table_name
+GROUP BY name
+ORDER BY SUM(amount) DESC;
+-- SELECTS name and gets the sum of the amount for each name
+-- Then orders the amount
+
+
+-- HAVING: occurs after group by where as WHERE occurs before the columns are grouped.
+SELECT column1, SUM(column2)
+FROM table_name
+GROUP BY column1
+HAVING SUM(column2) > 200;
