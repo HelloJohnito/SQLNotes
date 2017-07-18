@@ -111,3 +111,18 @@ SELECT column1, SUM(column2)
 FROM table_name
 GROUP BY column1
 HAVING SUM(column2) > 200;
+
+-- AS
+SELECT column1, SUM(column2) AS new_name
+FROM table_name
+
+
+
+-- Join
+
+SELECT table_a.column1, table_b.column2
+FROM table_a
+JOIN table_b ON table_b.id = table_a.id
+WHERE first LIKE 'A%'
+
+  -- Inner Join Clause: Returns rows in A table that have the corresponding rows in the b table.
