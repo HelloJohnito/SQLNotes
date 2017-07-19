@@ -114,7 +114,7 @@ HAVING SUM(column2) > 200;
 
 -- AS
 SELECT column1, SUM(column2) AS new_name
-FROM table_name
+FROM table_name;
 
 
 
@@ -123,7 +123,7 @@ FROM table_name
 SELECT table_a.column1, table_b.column2
 FROM table_a
 JOIN table_b ON table_b.id = table_a.id
-WHERE first LIKE 'A%'
+WHERE first LIKE 'A%';
 
   -- Inner Join: Returns rows in A table that have the corresponding rows in the b table. Available to both sides.
 
@@ -133,7 +133,7 @@ WHERE first LIKE 'A%'
     SELECT * FROM table_a
     FULL OUTER JOIN table_b
     ON table_a.name = table_b.name
-    WHERE table_a.name IS NULL OR table_b.name IS NULL
+    WHERE table_a.name IS NULL OR table_b.name IS NULL;
 
   -- Left Outer Join: Produces a complete set of records from table A with the matching records (where available) in table B. If there is no match, the right side will contain null.
 
@@ -141,7 +141,7 @@ WHERE first LIKE 'A%'
     SELECT * FROM table_a
     LEFT OUTER JOIN table_b
     ON table_a.name = table_b.name
-    WHERE table_b.name IS null
+    WHERE table_b.name IS null;
 
   -- Right Outer Join: Produces a complete set of records from table B with the matching records (where available) in table A. If there is no match, the right side will contain null.
 
@@ -151,9 +151,26 @@ WHERE first LIKE 'A%'
 
 -- UNION: operator combines result sets of two or more select statements into a single result set. UNION combines and deletes duplicate rows
 -- UNION ALL will not delete duplicate
-
 SELECT column1, column2
 FROM table_1
 UNION
 SELECT column_1, column_2
-FROM table_2
+FROM table_2;
+
+
+-- TIMESTAMPS
+SELECT extract(day from column)
+FROM table_a;
+
+
+-- Subqueries
+SELECT file_id, title, rental_rate
+FROM film
+WHERE rental_rate > (SELECT AVG(rental_rate) FROM file)
+
+-- Self join
+SELECT e1.employee_name
+FROM employee AS e1, employee AS e2
+WHERE
+el.employee_location = e2.employee_location
+AND e2.employe_name = "Joe";
