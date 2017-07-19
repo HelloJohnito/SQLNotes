@@ -125,4 +125,35 @@ FROM table_a
 JOIN table_b ON table_b.id = table_a.id
 WHERE first LIKE 'A%'
 
-  -- Inner Join Clause: Returns rows in A table that have the corresponding rows in the b table.
+  -- Inner Join: Returns rows in A table that have the corresponding rows in the b table. Available to both sides.
+
+  -- Full Outer Join: Produces the set of all records in table A and table b. if there is no match the missing side will contain null.
+
+  -- Full Outer Join with WHERE a is null or b is null: selects everything expect the ones in common.
+    SELECT * FROM table_a
+    FULL OUTER JOIN table_b
+    ON table_a.name = table_b.name
+    WHERE table_a.name IS NULL OR table_b.name IS NULL
+
+  -- Left Outer Join: Produces a complete set of records from table A with the matching records (where available) in table B. If there is no match, the right side will contain null.
+
+  -- Left Outer Join with WHERE B is NUll: Produces the set of records only in Table A but not in Table B
+    SELECT * FROM table_a
+    LEFT OUTER JOIN table_b
+    ON table_a.name = table_b.name
+    WHERE table_b.name IS null
+
+  -- Right Outer Join: Produces a complete set of records from table B with the matching records (where available) in table A. If there is no match, the right side will contain null.
+
+  -- Right Outer Join with WHERE A is Null: Produces the set of records only in Table B but not in Table A
+
+
+
+-- UNION: operator combines result sets of two or more select statements into a single result set. UNION combines and deletes duplicate rows
+-- UNION ALL will not delete duplicate
+
+SELECT column1, column2
+FROM table_1
+UNION
+SELECT column_1, column_2
+FROM table_2
